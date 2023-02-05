@@ -1,0 +1,36 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="formGroup">
+      <div class="form-group" *ngFor="let column of columns; let i = index">
+        <div class="form-group">
+          <mat-form-field>
+            <mat-label>{{ column.text }}</mat-label>
+            <input
+              matInput
+              placeholder="Введите"
+              [formControlName]="column.name"
+            />
+            <button
+                matSuffix
+                mat-icon-button
+                *ngIf="formGroup.get(column.name)!.value"
+                (click)="onClear(column)">
+                <mat-icon>close</mat-icon>
+              </button>
+            <mat-error *ngIf="formGroup.invalid">Обязательное поле</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="form-group">
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="formGroup.invalid"
+          (click)="addUser(formGroup.value)"
+        >
+          Создать пользователя
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

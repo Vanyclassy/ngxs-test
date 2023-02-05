@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
+import { DeleteUser } from '../action/action';
 import { User } from '../User.interface';
 import { UserColumn } from '../userColumns';
 
@@ -25,5 +26,10 @@ export class TableComponent {
 
   constructor(private store: Store) {
     this.data$ = this.store.select((state) => state.users.users);
+  }
+
+
+  deleteUser(): void {
+    this.store.dispatch(new DeleteUser());
   }
 }

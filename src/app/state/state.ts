@@ -1,5 +1,5 @@
 import { Action, Selector, State, StateContext } from '@ngxs/store';
-import { AddUser } from '../action/action';
+import { AddUser, DeleteUser } from '../action/action';
 import { User } from '../User.interface';
 
 export class UserStateModel {
@@ -33,6 +33,15 @@ export class UserState {
     const state = getState();
     patchState({
       users: [...state.users, payload],
+    });
+  }
+
+  // Действие для очистки всех пользовательских данных
+
+  @Action(DeleteUser)
+  delete({ patchState }: StateContext<UserStateModel>) {
+    patchState({
+      users: [],
     });
   }
 }

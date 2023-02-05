@@ -6,7 +6,7 @@ import {
   FormControl,
 } from '@angular/forms';
 import { Store } from '@ngxs/store';
-import { AddUser } from '../action/action';
+import { AddUser, DeleteUser } from '../action/action';
 import { User } from '../User.interface';
 import { UserColumn } from '../userColumns';
 
@@ -27,10 +27,6 @@ export class CardComponent implements OnInit {
 
   addUser(name: User): void {
     this.store.dispatch(new AddUser(name));
-  }
-
-  deleteUser(name: User) {
-    
   }
 
   ngOnInit(): void {

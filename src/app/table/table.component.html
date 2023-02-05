@@ -32,6 +32,17 @@
             </td>
           </tr>
         </table>
+
+        <div class="buttons-container">
+          <button
+            mat-raised-button
+            color="warn"
+            *ngIf="data.length"
+            (click)="deleteUser()"
+          >
+            Очистить список пользователей
+          </button>
+        </div>
       </ng-container>
     </mat-expansion-panel>
   </mat-accordion>
